@@ -49,7 +49,7 @@ class ConvertTimeUseCaseTest {
         assertEquals("OOOO", fiveMinutesState.oneMinutesRow)
     }
 
-    // Test Five-Minute Row - Red
+    // Test Five-Minute Row - Green
     @Test
     fun testFiveMinuteRow_shouldHandleQuartersAndIntermediateTimes() {
         // 0 minutes
