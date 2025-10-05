@@ -48,4 +48,28 @@ class ConvertTimeUseCaseTest {
         val fiveMinutesState = useCase.execute("10:05:00")
         assertEquals("OOOO", fiveMinutesState.oneMinutesRow)
     }
+
+    // Test Five-Minute Row - Red
+    @Test
+    fun testFiveMinuteRow_shouldHandleQuartersAndIntermediateTimes() {
+        // 0 minutes
+        val zeroMinuteState = useCase.execute("10:00:00")
+        assertEquals("OOOOOOOOOOO", zeroMinuteState.fiveMinutesRow)
+
+        // 15 minutes
+        val fifteenMinutesState = useCase.execute("10:15:00")
+        assertEquals("YYROOOOOOOO", fifteenMinutesState.fiveMinutesRow)
+
+        // 30 minutes
+        val thirtyMinutesState = useCase.execute("10:30:00")
+        assertEquals("YYRYYROOOOO", thirtyMinutesState.fiveMinutesRow)
+
+        // 50 minutes
+        val fiftyMinutesState = useCase.execute("10:50:00")
+        assertEquals("YYRYYRYYRYO", fiftyMinutesState.fiveMinutesRow)
+
+        // 59 minutes
+        val fiftyNineMinutesState = useCase.execute("10:59:00")
+        assertEquals("YYRYYRYYRYY", fiftyNineMinutesState.fiveMinutesRow)
+    }
 }
