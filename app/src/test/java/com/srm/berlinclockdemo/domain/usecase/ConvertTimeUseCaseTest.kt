@@ -21,4 +21,11 @@ class ConvertTimeUseCaseTest {
         // ASSERT: Yellow for even
         assertEquals("Y", state.secondsRow)
     }
+
+    @Test
+    fun testSecondsRow_shouldBeOffForOddSeconds() {
+        val oddTime = "09:00:01"
+        val state = useCase.execute(oddTime)
+        assertEquals("O", state.secondsRow) // Off for odd seconds
+    }
 }

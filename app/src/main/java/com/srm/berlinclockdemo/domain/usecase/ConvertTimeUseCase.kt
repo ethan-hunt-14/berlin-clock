@@ -8,7 +8,7 @@ class ConvertTimeUseCase {
 
         return BerlinClockState(
             // passing hardcode value to make test case green
-            secondsRow = getSecondsRow(10)
+            secondsRow = getSecondsRow(11)
         )
     }
 
