@@ -72,4 +72,40 @@ class ConvertTimeUseCaseTest {
         val fiftyNineMinutesState = useCase.execute("10:59:00")
         assertEquals("YYRYYRYYRYY", fiftyNineMinutesState.fiveMinutesRow)
     }
+
+    // Test One-Hour Row - Red
+    @Test
+    fun testOneHourRow_shouldHandleZeroToFourHours() {
+        // 0 remainder - 0 lights blink
+        val zeroHourState = useCase.execute("10:00:00")
+        assertEquals("OOOO", zeroHourState.oneHoursRow)
+
+        // 3 remainder - 3 lights blink
+        val threeHourState = useCase.execute("03:00:00")
+        assertEquals("RRRO", threeHourState.oneHoursRow)
+
+        // 4 remainder - 4 lights blink
+        val fourHourState = useCase.execute("04:00:00")
+        assertEquals("RRRR", fourHourState.oneHoursRow)
+
+        // 5 remainder
+        val fiveHourState = useCase.execute("05:00:00")
+        assertEquals("OOOO", fiveHourState.oneHoursRow)
+    }
+
+    // Test Five-Hour - Red
+    @Test
+    fun testFiveHourRow_shouldHandleFiveHourBlocks() {
+        // 0 hours
+        val zeroHourState = useCase.execute("00:00:00")
+        assertEquals("OOOO", zeroHourState.fiveHoursRow)
+
+        // 10 hours
+        val tenHourState = useCase.execute("10:00:00")
+        assertEquals("RROO", tenHourState.fiveHoursRow)
+
+        // 23 hours
+        val twentyThreeHourState = useCase.execute("23:00:00")
+        assertEquals("RRRR", twentyThreeHourState.fiveHoursRow)
+    }
 }
