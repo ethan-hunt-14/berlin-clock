@@ -13,7 +13,7 @@ class ConvertTimeUseCaseTest {
         useCase = ConvertTimeUseCase()
     }
 
-    // Test the Seconds Row - Red
+    // Test the Seconds Row - Green
     @Test
     fun testSecondsRow_shouldBeYellowForEvenSeconds() {
         val evenTime = "10:00:00"
@@ -29,7 +29,7 @@ class ConvertTimeUseCaseTest {
         assertEquals("O", state.secondsRow) // Off for odd seconds
     }
 
-    // Test the One-Minute Row - Red
+    // Test the One-Minute Row - Green
     @Test
     fun testOneMinuteRow_shouldHandleZeroToFourMinutes() {
         // 0 lights blink
