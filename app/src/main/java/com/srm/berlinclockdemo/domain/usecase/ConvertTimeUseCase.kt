@@ -21,6 +21,8 @@ class ConvertTimeUseCase {
             secondsRow = getSecondsRow(seconds),
             oneMinutesRow = getOneMinutesRow(minutes),
             fiveMinutesRow = getFiveMinutesRow(minutes),
+            oneHoursRow = getOneHoursRow(hours),
+            fiveHoursRow = getFiveHoursRow(hours)
             )
     }
 
@@ -58,4 +60,17 @@ class ConvertTimeUseCase {
 
         return stringBuilder.toString()
     }
+
+    private fun getOneHoursRow(hours: Int): String {
+        // Each light - 1 hour/remainder - so 4 lights
+        val blinkCount = hours % 5
+        return "R".repeat(blinkCount) + "O".repeat(4 - blinkCount)
+    }
+
+    private fun getFiveHoursRow(hours: Int): String {
+        // Each light - 5 hours - so 4 lights
+        val blinkCount = hours / 5
+        return "R".repeat(blinkCount) + "O".repeat(4 - blinkCount)
+    }
+
 }

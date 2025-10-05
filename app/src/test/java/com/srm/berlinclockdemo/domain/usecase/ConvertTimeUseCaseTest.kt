@@ -73,7 +73,7 @@ class ConvertTimeUseCaseTest {
         assertEquals("YYRYYRYYRYY", fiftyNineMinutesState.fiveMinutesRow)
     }
 
-    // Test One-Hour Row - Red
+    // Test One-Hour Row - Green
     @Test
     fun testOneHourRow_shouldHandleZeroToFourHours() {
         // 0 remainder - 0 lights blink
@@ -93,7 +93,7 @@ class ConvertTimeUseCaseTest {
         assertEquals("OOOO", fiveHourState.oneHoursRow)
     }
 
-    // Test Five-Hour - Red
+    // Test Five-Hour - Green
     @Test
     fun testFiveHourRow_shouldHandleFiveHourBlocks() {
         // 0 hours
