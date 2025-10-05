@@ -54,7 +54,7 @@ fun BerlinClockScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(48.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -64,7 +64,7 @@ fun BerlinClockScreen(
         ) {
             Column(
                 modifier = Modifier
-                    .background(Color(0xFF212121))
+                    .background(Color.LightGray)
                     .padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -73,14 +73,42 @@ fun BerlinClockScreen(
 
                 Spacer(Modifier.height(16.dp))
 
+                // 5 Hours (4 Rectangles)
+                Row(
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    state.fiveHoursRow.forEach { char ->
+                        Light(colorCode = char, modifier = Modifier.weight(1f), isSquare = true)
+                    }
+                }
+
+                Spacer(Modifier.height(8.dp))
+
+                // 1 Hour (4 Rectangles)
+                Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.fillMaxWidth()) {
+                    state.oneHoursRow.forEach { char ->
+                        Light(colorCode = char, modifier = Modifier.weight(1f), isSquare = true)
+                    }
+                }
+
+                Spacer(Modifier.height(16.dp))
+
                 // Minutes - 11 small lights portion
-                Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.fillMaxWidth().height(20.dp)) {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    modifier = Modifier.fillMaxWidth().height(20.dp)
+                ) {
                     state.fiveMinutesRow.forEachIndexed { index, char ->
                         Light(
                             colorCode = char,
                             modifier = Modifier.weight(1f),
                             isSquare = true
                         )
+                        /*LightPiller(
+                            colorCode = char,
+                            modifier = Modifier.weight(1f).height(10.dp)
+                        )*/
                     }
                 }
 
